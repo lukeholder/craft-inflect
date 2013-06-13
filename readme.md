@@ -13,6 +13,8 @@ will output:
 bums
 ```
 
+and
+
 ```
 {{ 'person'|pluralize }}
 ```
@@ -22,6 +24,9 @@ will output:
 ```
 people
 ```
+
+and
+
 
 ```
 {{ 'people'|pluralize(1) }}
