@@ -33,7 +33,7 @@ class InflectPlugin extends BasePlugin
         return false;
     }
 
-    public function hookAddTwigExtension()
+    public function addTwigExtension()
     {
         Craft::import('plugins.inflect.twigextensions.InflectTwigExtension');
 
