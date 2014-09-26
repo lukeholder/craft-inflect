@@ -7,9 +7,7 @@ the number passed to the filter.
 # Download
 
 This github project is for developers using composer to require dependencies. Do
- not download the zip from github, but download here:
-
- https://dl.dropbox.com/s/805cjdc6mvvv1vx/inflect.zip
+ not download the zip from github, but download on the releases page.
 
 
 # Usage Examples
