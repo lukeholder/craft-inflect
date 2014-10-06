@@ -31,7 +31,7 @@ This github project is for developers using composer to require dependencies. Do
 ```
 
 ```
-{{ 'people'|pluralize(1) }} #person
+{{ 'people'|pluralize(1) }} # person
 ```
 
 ```
