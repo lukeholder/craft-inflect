@@ -4,8 +4,6 @@ namespace Craft;
 
 require 'vendor/autoload.php';
 
-use Inflector\Inflector as Ifnl;
-
 class InflectPlugin extends BasePlugin
 {
     public function getName()
