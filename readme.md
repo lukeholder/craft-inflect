@@ -54,4 +54,6 @@ This github project is for developers using composer to require dependencies. Do
 
 # MIT Licence
 
-Made by Luke Holder
+Original Author Luke Holder
+Contributors: Tim Kelty
+
