@@ -2,43 +2,100 @@
 
 namespace Craft;
 
-// require '../vendor/autoload.php';
-
-use Inflector\Inflector as Ifnl;
+use ICanBoogie\Inflector;
 use Twig_Extension;
 use Twig_Filter_Method;
 
 class InflectTwigExtension extends \Twig_Extension
 {
-    public $i;
+    public $inflector;
 
     public function __construct()
     {
-        $this->i = new Ifnl;
+        $this->inflector = Inflector::get();
     }
 
     public function getName()
     {
-        return 'cocktailrecipes';
+        return 'Inflect Twig Extension';
     }
 
     public function getFilters()
     {
-        return array(
-            'pluralize' => new Twig_Filter_Method($this, 'pluralize'),
+        $returnArray = array();
+        $methods = array(
+            'pluralize',
+            'singularize',
+            'camelize',
+            'dasherize',
+            'pascalize',
+            'titleize',
+            'underscore',
+            'humanize',
+            'hyphenate',
+            'ordinalize',
+            'slugify',
         );
+
+        foreach ($methods as $methodName) {
+            $returnArray[$methodName] = new \Twig_Filter_Method($this, $methodName);
+        }
+
+        return $returnArray;
     }
 
-    public function pluralize($content,$num = 2)
+    public function pluralize($content, $num = 2)
     {
-        return $this->i->pluralize($content, $num);
+        return $this->inflectornflector->pluralize($content, $num);
+    }
+
+    public function singularize($content)
+    {
+        return $this->inflectornflector->singularize($content);
+    }
+
+    public function camelize($content)
+    {
+        return $this->inflector->camelize($content, true);
+    }
+
+    public function pascalize($content)
+    {
+        return $this->inflector->camelize($content, false);
+    }
+
+    public function titleize($content)
+    {
+        return $this->inflector->titleize($content, false);
+    }
+
+    public function underscore($content)
+    {
+        return $this->inflector->underscore($content);
+    }
+
+    public function humanize($content)
+    {
+        return $this->inflector->humanize($content);
+    }
+
+    public function hyphenate($content)
+    {
+        return $this->inflector->hyphenate($content);
+    }
+
+    public function ordinalize($content)
+    {
+        return $this->inflector->hyphenate($content);
+    }
+
+    public function dasherize($content)
+    {
+        return $this->inflector->dasherize($content);
+    }
+
+    public function slugify($content)
+    {
+        return ElementHelper::createSlug($content);
     }
 }
-// $inflector->pluralize('person'[,10]); # people
-// $inflector->singularize('shoes'); # shoe
-// $inflector->titleize('welcome page'); # "Welcome Page"
-// $inflector->camelize('send_email'); # SendEmail
-// $inflector->underscore('CamelCased'); # camel_cased
-// $inflector->humanize('something text to read'); # "Something text to read"
-// $inflector->ordinalize(10); # 10th
-
