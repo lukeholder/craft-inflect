@@ -46,12 +46,12 @@ class InflectTwigExtension extends \Twig_Extension
 
     public function pluralize($content, $num = 2)
     {
-        return $this->inflectornflector->pluralize($content, $num);
+        return $this->inflector->pluralize($content, $num);
     }
 
     public function singularize($content)
     {
-        return $this->inflectornflector->singularize($content);
+        return $this->inflector->singularize($content);
     }
 
     public function camelize($content)
