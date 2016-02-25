@@ -1,0 +1,15 @@
+{
+    "name": "lukeholder/craft-inflect",
+    "description": "Craft Inflect plugin.",
+    "homepage": "https://github.com/evolution7/craft-inflect",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luke Holder"
+        }
+    ],
+    "type": "craft-plugin",
+    "require": {
+        "icanboogie/inflector": "1.3.2"
+    }
+}
