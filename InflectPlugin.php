@@ -1,8 +1,5 @@
 <?php
-
 namespace Craft;
-
-require 'vendor/autoload.php';
 
 class InflectPlugin extends BasePlugin
 {
