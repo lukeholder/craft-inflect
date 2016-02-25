@@ -35,6 +35,7 @@ class InflectTwigExtension extends \Twig_Extension
             'hyphenate',
             'ordinalize',
             'slugify',
+            'ordinal',
         );
 
         foreach ($methods as $methodName) {
@@ -84,9 +85,14 @@ class InflectTwigExtension extends \Twig_Extension
         return $this->inflector->hyphenate($content);
     }
 
+    public function ordinal($content)
+    {
+        return $this->inflector->ordinal($content);
+    }
+
     public function ordinalize($content)
     {
-        return $this->inflector->hyphenate($content);
+        return $this->inflector->ordinalize($content);
     }
 
     public function dasherize($content)
