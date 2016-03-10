@@ -39,7 +39,7 @@ class InflectTwigExtension extends \Twig_Extension
         );
 
         foreach ($methods as $methodName) {
-            $returnArray[$methodName] = new \Twig_Filter_Method($this, $methodName);
+            $returnArray[$methodName] = new \Twig_SimpleFilter($methodName, array($this, $methodName));
         }
 
         return $returnArray;
