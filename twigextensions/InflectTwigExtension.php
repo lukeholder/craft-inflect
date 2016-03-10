@@ -36,6 +36,7 @@ class InflectTwigExtension extends \Twig_Extension
             'ordinalize',
             'slugify',
             'ordinal',
+            'summarizeNumber',
         );
 
         foreach ($methods as $methodName) {
@@ -103,5 +104,24 @@ class InflectTwigExtension extends \Twig_Extension
     public function slugify($content)
     {
         return ElementHelper::createSlug($content);
+    }
+
+    public function summarizeNumber($content)
+    {
+        $number = (int)$content;
+        $units = array(
+            'B' => 1000000000,
+            'M' => 1000000,
+            'K' => 1000,
+        );
+        foreach ($units as $letter => $count) {
+            if ($number > $count) {
+                return ($number / $count) . $letter . '+';
+            } elseif ($number == $count) {
+                return ($number / $count) . $letter;
+            }
+        }
+
+        return $number;
     }
 }
