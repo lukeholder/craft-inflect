@@ -106,7 +106,13 @@ class InflectTwigExtension extends \Twig_Extension
         return ElementHelper::createSlug($content);
     }
 
-    public function summarizeNumber($content)
+    /**
+     * @param $content
+     * @param string $prefixOrPostfix The text to be use prepended/appended to the short form
+     * @param bool $usePostfix If false, use prefix format, otherwise use postfix
+     * @return string
+     */
+    public function summarizeNumber($content, $prefixOrPostfix = '+', $usePostfix = false)
     {
         $number = (int)$content;
         $units = array(
@@ -116,7 +122,12 @@ class InflectTwigExtension extends \Twig_Extension
         );
         foreach ($units as $letter => $count) {
             if ($number > $count) {
-                return ($number / $count) . $letter . '+';
+                if ($usePostfix) {
+                    return ($number / $count) . $letter . $prefixOrPostfix;
+                } else {
+                    // Use prefix
+                    return $prefixOrPostfix . ($number / $count) . $letter;
+                }
             } elseif ($number == $count) {
                 return ($number / $count) . $letter;
             }
