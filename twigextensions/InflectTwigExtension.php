@@ -122,14 +122,17 @@ class InflectTwigExtension extends \Twig_Extension
         );
         foreach ($units as $letter => $count) {
             if ($number > $count) {
+                // Remove prefix/postfix if it's an exact number
+                $prefixOrPostfix = ($number % $count) ? $prefixOrPostfix : '';
+
                 if ($usePostfix) {
                     return floor($number / $count) . $letter . $prefixOrPostfix;
                 } else {
-                    // Use prefix
                     return $prefixOrPostfix . floor($number / $count) . $letter;
                 }
+
             } elseif ($number == $count) {
-                return ($number / $count) . $letter;
+                return "1" . $letter;
             }
         }
 
