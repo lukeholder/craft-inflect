@@ -112,21 +112,21 @@ class InflectTwigExtension extends \Twig_Extension
      * @param bool $usePostfix If false, use prefix format, otherwise use postfix
      * @return string
      */
-    public function summarizeNumber($content, $prefixOrPostfix = '+', $usePostfix = false)
+    public function summarizeNumber($content, $prefixOrPostfix = '+', $usePostfix = true)
     {
         $number = (int)$content;
         $units = array(
-            'B' => 1000000000,
-            'M' => 1000000,
-            'K' => 1000,
+            'b' => 1000000000,
+            'm' => 1000000,
+            'k' => 1000,
         );
         foreach ($units as $letter => $count) {
             if ($number > $count) {
                 if ($usePostfix) {
-                    return ($number / $count) . $letter . $prefixOrPostfix;
+                    return floor($number / $count) . $letter . $prefixOrPostfix;
                 } else {
                     // Use prefix
-                    return $prefixOrPostfix . ($number / $count) . $letter;
+                    return $prefixOrPostfix . floor($number / $count) . $letter;
                 }
             } elseif ($number == $count) {
                 return ($number / $count) . $letter;
