@@ -48,7 +48,11 @@ class InflectTwigExtension extends \Twig_Extension
 
     public function pluralize($content, $num = 2)
     {
-        return $this->inflector->pluralize($content, $num);
+        if ($num >= 2) {
+            return $this->inflector->pluralize($content);
+        }
+
+        return $this->inflector->singularize($content);
     }
 
     public function singularize($content)
