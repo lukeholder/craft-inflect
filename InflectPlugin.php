@@ -10,7 +10,7 @@ class InflectPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.5.0';
+        return '1.7.0';
     }
 
     public function getDeveloper()
