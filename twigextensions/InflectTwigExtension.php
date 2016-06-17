@@ -36,10 +36,11 @@ class InflectTwigExtension extends \Twig_Extension
             'ordinalize',
             'slugify',
             'ordinal',
+            'summarizeNumber',
         );
 
         foreach ($methods as $methodName) {
-            $returnArray[$methodName] = new \Twig_Filter_Method($this, $methodName);
+            $returnArray[$methodName] = new \Twig_SimpleFilter($methodName, array($this, $methodName));
         }
 
         return $returnArray;
@@ -47,7 +48,11 @@ class InflectTwigExtension extends \Twig_Extension
 
     public function pluralize($content, $num = 2)
     {
-        return $this->inflector->pluralize($content, $num);
+        if ($num >= 2) {
+            return $this->inflector->pluralize($content);
+        }
+
+        return $this->inflector->singularize($content);
     }
 
     public function singularize($content)
@@ -103,5 +108,39 @@ class InflectTwigExtension extends \Twig_Extension
     public function slugify($content)
     {
         return ElementHelper::createSlug($content);
+    }
+
+    /**
+     * @param $content
+     * @param string $prefixOrPostfix The text to be use prepended/appended to the short form
+     * @param bool $usePostfix If false, use prefix format, otherwise use postfix
+     * @param int $precision The number of decimal places to round to
+     * @return string
+     */
+    public function summarizeNumber($content, $prefixOrPostfix = '+', $usePostfix = true, $precision = 0)
+    {
+        $number = (int)$content;
+        $units = array(
+            'b' => 1000000000,
+            'm' => 1000000,
+            'k' => 1000,
+        );
+        foreach ($units as $letter => $count) {
+            if ($number > $count) {
+                // Remove prefix/postfix if it's an exact number
+                $prefixOrPostfix = ($number % $count) ? $prefixOrPostfix : '';
+
+                if ($usePostfix) {
+                    return round(($number / $count), $precision) . $letter . $prefixOrPostfix;
+                } else {
+                    return $prefixOrPostfix . round(($number / $count), $precision) . $letter;
+                }
+
+            } elseif ($number == $count) {
+                return "1" . $letter;
+            }
+        }
+
+        return $number;
     }
 }
