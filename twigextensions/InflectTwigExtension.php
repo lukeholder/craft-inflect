@@ -112,11 +112,12 @@ class InflectTwigExtension extends \Twig_Extension
 
     /**
      * @param $content
+     * @param int $precision The number of decimal places to round to
      * @param string $prefixOrPostfix The text to be use prepended/appended to the short form
      * @param bool $usePostfix If false, use prefix format, otherwise use postfix
      * @return string
      */
-    public function summarizeNumber($content, $prefixOrPostfix = '+', $usePostfix = true)
+    public function summarizeNumber($content, $precision = 0, $prefixOrPostfix = '+', $usePostfix = true)
     {
         $number = (int)$content;
         $units = array(
@@ -130,9 +131,9 @@ class InflectTwigExtension extends \Twig_Extension
                 $prefixOrPostfix = ($number % $count) ? $prefixOrPostfix : '';
 
                 if ($usePostfix) {
-                    return floor($number / $count) . $letter . $prefixOrPostfix;
+                    return round(($number / $count), $precision) . $letter . $prefixOrPostfix;
                 } else {
-                    return $prefixOrPostfix . floor($number / $count) . $letter;
+                    return $prefixOrPostfix . round(($number / $count), $precision) . $letter;
                 }
 
             } elseif ($number == $count) {
