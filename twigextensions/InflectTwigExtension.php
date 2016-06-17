@@ -112,12 +112,12 @@ class InflectTwigExtension extends \Twig_Extension
 
     /**
      * @param $content
-     * @param int $precision The number of decimal places to round to
      * @param string $prefixOrPostfix The text to be use prepended/appended to the short form
      * @param bool $usePostfix If false, use prefix format, otherwise use postfix
+     * @param int $precision The number of decimal places to round to
      * @return string
      */
-    public function summarizeNumber($content, $precision = 0, $prefixOrPostfix = '+', $usePostfix = true)
+    public function summarizeNumber($content, $prefixOrPostfix = '+', $usePostfix = true, $precision = 0)
     {
         $number = (int)$content;
         $units = array(
