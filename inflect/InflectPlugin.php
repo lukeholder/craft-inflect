@@ -1,6 +1,8 @@
 <?php
 namespace Craft;
 
+require __DIR__.'/vendor/autoload.php';
+
 class InflectPlugin extends BasePlugin
 {
     public function getName()
@@ -10,7 +12,7 @@ class InflectPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.8';
+        return '1.7.1';
     }
 
     public function getDeveloper()
