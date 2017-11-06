@@ -14,6 +14,9 @@ This plugin enables a several Twig filters to transform the inflection of string
 * ordinalize
 * slugify
 
+# Craft 2 Only
+
+If you need to pluralize or singularize words in Craft 3, take a look at https://github.com/nystudio107/craft3-typogrify
 
 # Download
 
