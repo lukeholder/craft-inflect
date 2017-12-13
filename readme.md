@@ -26,10 +26,12 @@ Most of the above filters are now already available in Craft 2 and 3. See the ch
 | `dasherize` | `kebab` | `kebab` |
 | `pascalize` | `pascal` | `pascal` |
 | `titleize` | `ucwords` or `title` | `ucwords` or `title` |
-| `humanize` | | ? |
-| `hyophenate` | | ? |
-| `ordinalize` | | ? |
-| `slugify` | | ? |
+| `humanize` | | Try the [Typogrify](https://github.com/nystudio107/craft3-typogrify) plugin |
+| `hyophenate` | | Try the [Typogrify](https://github.com/nystudio107/craft3-typogrify) plugin |
+| `ordinalize` | | Try the [Typogrify](https://github.com/nystudio107/craft3-typogrify) plugin? |
+| `slugify` | | Try the [Typogrify](https://github.com/nystudio107/craft3-typogrify) plugin |
+
+The [Typogrify](https://github.com/nystudio107/craft3-typogrify) plugin allows you to use all of the [Stringy](https://github.com/danielstjules/Stringy) package features on your strings.
 
 # Download
 
