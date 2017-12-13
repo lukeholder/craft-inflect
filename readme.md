@@ -16,7 +16,20 @@ This plugin enables a several Twig filters to transform the inflection of string
 
 # Craft 2 Only
 
-If you need to pluralize or singularize words in Craft 3, take a look at https://github.com/nystudio107/craft3-typogrify
+Most of the above filters are now already available in Craft 2 and 3. See the chart below for the mapping:
+
+| Inflect | Craft 2 | Craft 3 |
+| --- | --- | --- |
+| `pluralize` | |  Try the [Typogrify](https://github.com/nystudio107/craft3-typogrify) plugin|
+| `singularize`| |  Try the [Typogrify](https://github.com/nystudio107/craft3-typogrify) plugin|
+| `camelize` | `camel` |  `camel` |
+| `dasherize` | `kebab` | `kebab` |
+| `pascalize` | `pascal` | `pascal` |
+| `titleize` | `ucwords` or `title` | `ucwords` or `title` |
+| `humanize` | | ? |
+| `hyophenate` | | ? |
+| `ordinalize` | | ? |
+| `slugify` | | ? |
 
 # Download
 
